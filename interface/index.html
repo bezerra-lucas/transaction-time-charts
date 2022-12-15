@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
+      rel="stylesheet"
+    />
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      body,
+      html {
+        padding: 0;
+        margin: 0;
+      }
+
+      .wrapper {
+        width: 100vw;
+        height: 100vh;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+    </style>
+
+    <style>
+      * {
+        font-family: "Inter", sans-serif;
+      }
+
+      .transaction-time-chart {
+        display: flex;
+        flex-direction: column;
+
+        background: #f8f8f8;
+        box-shadow: 2px 4px 7px 3px rgba(0, 0, 0, 0.25);
+        border-radius: 10px;
+
+        padding: 50px;
+      }
+
+      .controls {
+        display: flex;
+        flex-direction: row;
+      }
+
+      .right {
+        display: flex;
+        flex-direction: column;
+        margin: 0 0 0 16px;
+      }
+      .first-row,
+      .second-row,
+      .third-row {
+        display: flex;
+        flex-direction: row;
+      }
+
+      .first-row {
+        display: flex;
+        align-items: center;
+      }
+
+      .second-row {
+        margin: 14px 0;
+      }
+
+      .hv {
+        margin: 0 0 0 auto;
+      }
+
+      .image-icon {
+        background: #4b47ff;
+        border-radius: 4px;
+        width: 75px;
+        height: 75px;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        color: white;
+        font-style: normal;
+        font-weight: 700;
+        font-size: 35px;
+        line-height: 52px;
+      }
+
+      .time {
+        margin-top: 7px;
+        width: 75px;
+        height: 27px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        background: #3446a6;
+        border-radius: 2px;
+
+        color: white;
+      }
+
+      .third-row {
+        margin-top: 20px;
+        width: 300px;
+        display: flex;
+        align-items: center;
+      }
+
+      .bar {
+        height: 4px;
+        width: 100%;
+
+        background: linear-gradient(90deg, #3c5bff 0%, #7e1aad 100%);
+      }
+
+      .time-circles {
+        width: 32px;
+        height: 32px;
+        border-radius: 100%;
+        position: absolute;
+
+        color: white;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        background: #3e58fb;
+      }
+
+      .n20 {
+        margin-left: 0px;
+        background: #3e58fb;
+      }
+
+      .n15 {
+        margin-left: 75px;
+        background: #4f47e6;
+      }
+
+      .n10 {
+        margin-left: 150px;
+        background: #6037d2;
+      }
+
+      .n5 {
+        margin-left: 225px;
+        background: #7027bd;
+      }
+
+      .n0 {
+        margin-left: 300px;
+        background: #7a1db1;
+      }
+
+      .charts {
+        margin-top: 35px;
+
+        width: 100%;
+        height: 352px;
+
+        background: #ffffff;
+        box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+        border-radius: 18px;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        font-style: normal;
+        font-weight: 300;
+        font-size: 30px;
+        line-height: 24px;
+        display: flex;
+        align-items: center;
+        text-align: center;
+      }
+
+      .title {
+        font-family: "Inter";
+        font-style: normal;
+        font-size: 20px;
+        line-height: 24px;
+
+        color: #000000;
+      }
+
+      .title-1 {
+        font-weight: 600;
+      }
+      .title-2 {
+        font-weight: 400;
+      }
+
+      .center-dot {
+        background-color: #414141;
+        width: 4px;
+        height: 4px;
+        margin: auto 14px;
+        border-radius: 100%;
+      }
+
+      .st {
+        margin-left: 17px;
+      }
+
+      .number {
+        outline: 0;
+        border: 0;
+        width: 27px;
+        height: 27px;
+        margin-top: 10px;
+        background: #171d42;
+        border-radius: 2px;
+        font-family: "Inter";
+        font-style: normal;
+        font-weight: 400;
+        font-size: 15.912px;
+        line-height: 19px;
+        display: inline-flex;
+        align-items: center;
+        text-align: center;
+        justify-content: center;
+        flex-direction: row;
+        color: #ffffff;
+        transition: 0.6s;
+        animation: normal;
+      }
+
+      .number:hover {
+        opacity: 0.4;
+        cursor: pointer;
+      }
+
+      .selected-number {
+        background: #3e58fb !important;
+      }
+
+      .st span,
+      .hv span {
+        margin-right: 5px;
+        font-family: "Inter";
+        font-style: normal;
+        font-weight: 500;
+        font-size: 20px;
+        line-height: 24px;
+      }
+
+      .date-control {
+        display: flex;
+        align-items: center;
+      }
+
+      .date-control input,
+      .date-control button {
+        height: 27px;
+      }
+
+      .date-control button {
+        all: unset;
+        width: 27px;
+        height: 27px;
+        margin: 0 6px;
+        color: white;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        background: #2d3c9e;
+        border-radius: 2px;
+      }
+
+      .date-control button svg {
+        width: 19px;
+      }
+
+      .date-input {
+        all: unset;
+        background: #3e58fb;
+        border-radius: 2px;
+        color: white;
+        text-align: center;
+        width: 150px;
+      }
+
+      .titles {
+        display: flex;
+        flex-direction: column;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="wrapper">
+      <div class="transaction-time-chart">
+        <div class="controls">
+          <div class="left">
+            <div class="image-icon">1</div>
+            <input class="time" value="14:55" type="time" />
+          </div>
+          <div class="right">
+            <div class="first-row">
+              <div class="date-control">
+                <button><i data-feather="arrow-left"></i></button>
+                <input
+                  type="text"
+                  value="12/08/2022"
+                  class="date-input"
+                  name="date"
+                />
+                <button><i data-feather="arrow-right"></i></button>
+              </div>
+              <div class="st">
+                <span>ST</span>
+                <button class="number selected-number">1</button>
+                <button class="number">2</button>
+                <button class="number">3</button>
+                <button class="number">4</button>
+                <button class="number">5</button>
+                <button class="number">6</button>
+                <button class="number">7</button>
+                <button class="number">8</button>
+                <button class="number">9</button>
+                <button class="number">10</button>
+                <button class="number">11</button>
+              </div>
+            </div>
+            <div class="second-row">
+              <div class="titles">
+                <span class="title title-1">$title1</span>
+                <span class="title title-2">$title2</span>
+              </div>
+              <div class="hv">
+                <span>HV</span>
+                <button class="number">1</button>
+                <button class="number">2</button>
+                <button class="number">3</button>
+              </div>
+            </div>
+            <div class="third-row">
+              <div class="bar"></div>
+              <div class="time-circles n20">20</div>
+              <div class="time-circles n15">15</div>
+              <div class="time-circles n10">10</div>
+              <div class="time-circles n5">5</div>
+              <div class="time-circles n0">0</div>
+            </div>
+          </div>
+        </div>
+        <div class="charts">CHARTS.JS</div>
+      </div>
+    </div>
+    <script
+      type="text/javascript"
+      src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"
+    ></script>
+    <script
+      type="text/javascript"
+      src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"
+    ></script>
+    <script
+      type="text/javascript"
+      src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"
+    ></script>
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css"
+    />
+    <script src="https://unpkg.com/feather-icons"></script>
+    <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
+    <script>
+      feather.replace();
+    </script>
+    <script>
+      $(function () {
+        $('input[name="date"]').daterangepicker(
+          {
+            singleDatePicker: true,
+            showDropdowns: true,
+            minYear: 2000,
+            maxYear: parseInt(moment().format("YYYY"), 10),
+          },
+          function (start, end, label) {
+            // var years = moment().diff(start, "years");
+            // alert("You are " + years + " years old!");
+          }
+        );
+      });
+    </script>
+  </body>
+</html>
